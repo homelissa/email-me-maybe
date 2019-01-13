@@ -25,3 +25,79 @@ Migrating to CreateUsers (20190113164107)
   ↳ /Users/melissaho/.rbenv/versions/2.3.1/bin/rake:23
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /Users/melissaho/.rbenv/versions/2.3.1/bin/rake:23
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (3.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Melissa"], ["email", "melissa@example.com"], ["created_at", "2019-01-13 16:51:00.915046"], ["updated_at", "2019-01-13 16:51:00.915046"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/rails/mailers/example_mailer" for 127.0.0.1 at 2019-01-13 08:52:51 -0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/melissaho/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"example_mailer"}
+  Rendering /Users/melissaho/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.2.1/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application
+  Rendered /Users/melissaho/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.2.1/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 298ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/example_mailer/sample_mail_preview" for 127.0.0.1 at 2019-01-13 08:53:03 -0800
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"example_mailer/sample_mail_preview"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/example_mailer_preview.rb:4
+  Rendering example_mailer/sample_email.html.erb within layouts/mailer
+  Rendered example_mailer/sample_email.html.erb within layouts/mailer (0.6ms)
+  Rendering example_mailer/sample_email.text.erb within layouts/mailer
+  Rendered example_mailer/sample_email.text.erb within layouts/mailer (0.3ms)
+ExampleMailer#sample_email: processed outbound mail in 659.4ms
+  Rendering /Users/melissaho/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.2.1/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /Users/melissaho/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-5.2.1/lib/rails/templates/rails/mailers/email.html.erb (15.7ms)
+Completed 200 OK in 746ms (Views: 22.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/rails/mailers/example_mailer/sample_mail_preview?part=text%2Fhtml" for 127.0.0.1 at 2019-01-13 08:53:04 -0800
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"example_mailer/sample_mail_preview"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/example_mailer_preview.rb:4
+  Rendering example_mailer/sample_email.html.erb within layouts/mailer
+  Rendered example_mailer/sample_email.html.erb within layouts/mailer (0.6ms)
+  Rendering example_mailer/sample_email.text.erb within layouts/mailer
+  Rendered example_mailer/sample_email.text.erb within layouts/mailer (0.4ms)
+ExampleMailer#sample_email: processed outbound mail in 43.1ms
+  Rendering text template
+  Rendered text template (0.1ms)
+Completed 200 OK in 66ms (Views: 16.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rails/mailers/example_mailer/sample_mail_preview?part=text%2Fplain" for 127.0.0.1 at 2019-01-13 08:53:13 -0800
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"example_mailer/sample_mail_preview"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/example_mailer_preview.rb:4
+  Rendering example_mailer/sample_email.html.erb within layouts/mailer
+  Rendered example_mailer/sample_email.html.erb within layouts/mailer (1.1ms)
+  Rendering example_mailer/sample_email.text.erb within layouts/mailer
+  Rendered example_mailer/sample_email.text.erb within layouts/mailer (0.6ms)
+ExampleMailer#sample_email: processed outbound mail in 53.1ms
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 61ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rails/mailers/example_mailer/sample_mail_preview.txt?part=text%2Fhtml" for 127.0.0.1 at 2019-01-13 08:53:17 -0800
+Processing by Rails::MailersController#preview as TEXT
+  Parameters: {"part"=>"text/html", "path"=>"example_mailer/sample_mail_preview"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/example_mailer_preview.rb:4
+  Rendering example_mailer/sample_email.html.erb within layouts/mailer
+  Rendered example_mailer/sample_email.html.erb within layouts/mailer (1.4ms)
+  Rendering example_mailer/sample_email.text.erb within layouts/mailer
+  Rendered example_mailer/sample_email.text.erb within layouts/mailer (1.4ms)
+ExampleMailer#sample_email: processed outbound mail in 50.8ms
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 57ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
